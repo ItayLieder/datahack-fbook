@@ -9,9 +9,9 @@
 
 //Timeout values
 MAX_SCROL_TIME_FRIENDS = 30000;
-MAX_SCROL_TIME_GOING = 10000;
+MAX_SCROL_TIME_GOING = 15000;
 MAX_PAGE_LOAD_TIME = 10000;
-MAX_FRIEND_MINE_TIME = 60000; // at least scrol+load 
+MAX_FRIEND_MINE_TIME = 46000; // at least scroll+load 
 
 get_people = function() {
   // get list of attending people 
@@ -79,14 +79,16 @@ mine_all = function() {
 };
 
 mine_friends = function(url) {
+   
+    // open the friends page of this person 
     var newFbookWindow = window.open();
-    newFbookWindow.location.href = url;    
+    newFbookWindow.location.href = url + "/friends";    
   
+    // after page load , scroll down and mine    
     setTimeout(function() {
-      // click on friends
-      log("clicking friends of " + url);
-      newFbookWindow.document.getElementsByClassName("_6-6")[2].click();
-    
+      
+      log("mining friends of " + url);
+          
       // scroll down friends of this person 
       scrol = setInterval(function() {
         newFbookWindow.scrollByPages(1);      
