@@ -31,7 +31,7 @@ def log2graph(in_log):
             row = log.readline()
             if row.startswith("->End Person"):
                 break
-            row = row.split("?")[0]
+            row = row.split("?fref")[0]
             if row in V:
                 j = V.index(row)
                 E.append([i, j])
